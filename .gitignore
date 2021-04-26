@@ -1,6 +1,0 @@
-unpackage/dist/*
-deploy.sh
-package-lock.json
-.idea/
-.vscode/
-server/static/
