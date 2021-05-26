@@ -6,4 +6,4 @@ from celery import shared_task
 
 @shared_task
 def show():
-    print('ok')
+    print('ok!!!')

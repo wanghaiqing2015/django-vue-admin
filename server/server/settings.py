@@ -186,7 +186,7 @@ BROKER_URL = "amqp://guest:guest@wanghaiqing2020.com:5672/"   # 任务存储
 CELERYD_MAX_TASKS_PER_CHILD = 100  # 每个worker最多执行300个任务就会被销毁，可防止内存泄露
 CELERY_TIMEZONE = 'Asia/Shanghai'  # 设置时区
 CELERY_ENABLE_UTC = False  # 启动时区设置
-CELERY_IMPORTS = ("apps.system.tasks",)
+CELERY_IMPORTS = ("apps.system.tasks","server.celery",)
 
 # 日志配置
 # 创建日志的路径

@@ -17,7 +17,11 @@ app.config_from_object('django.conf:settings')
 from django.conf import settings
 app.autodiscover_tasks(settings.INSTALLED_APPS)
 
+# 解决时区问题,定时任务启动就循环输出？？？？？
+from django.utils import timezone
+app.now = timezone.now
+
 
 @app.task(bind=True)
 def debug_task(self):
-    print(f'Request: {self.request!r}')
+    print('debug_task ok!!!')
