@@ -1,6 +1,6 @@
 @echo off
-
-celery -A server worker -P eventlet -l debug  
+  
+celery -A server worker -l debug -P eventlet
  
 pause
 
