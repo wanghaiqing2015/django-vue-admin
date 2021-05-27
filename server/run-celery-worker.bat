@@ -1,6 +1,8 @@
 @echo off
   
-celery -A server worker -l debug -P eventlet
+REM celery -A server worker -l debug -P eventlet
+
+celery -A server worker -l debug -P solo
  
 pause
 

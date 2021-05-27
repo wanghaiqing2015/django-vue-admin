@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django_filters",
     'simple_history',
     'apps.system.apps.SystemConfig',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +115,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -186,6 +187,13 @@ BROKER_URL = "amqp://guest:guest@wanghaiqing2020.com:5672/"   # 任务存储
 CELERYD_MAX_TASKS_PER_CHILD = 100  # 每个worker最多执行300个任务就会被销毁，可防止内存泄露
 CELERY_TIMEZONE = 'Asia/Shanghai'  # 设置时区
 CELERY_ENABLE_UTC = False  # 启动时区设置
+
+# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/1'   
+CELERY_RESULT_BACKEND = 'django-db'  #使用django orm 作为结果存储
+
+# 这是使用了django_celery_beat的数据库调度模型,任务执行周期都被存在你指定的orm数据库中
+CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler' 
+
 CELERY_IMPORTS = ("apps.system.tasks","server.celery",)
 
 # 日志配置
