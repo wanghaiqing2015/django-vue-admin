@@ -1,8 +1,16 @@
 @echo off
-  
+
+REM 不报错
+REM celery -A server worker -l debug  
+
+REM 不报错
+celery -A server worker -l debug -P gevent
+
+REM 报错
 REM celery -A server worker -l debug -P eventlet
 
-celery -A server worker -l debug -P solo
+REM 不报错
+REM celery -A server worker -l debug -P solo
  
 pause
 
